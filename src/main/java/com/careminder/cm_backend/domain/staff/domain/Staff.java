@@ -1,25 +1,26 @@
 package com.careminder.cm_backend.domain.staff.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
 public class Staff {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String userName;
-    private String password;
-    private String firstName;
-    private String secondName;
+//    private String password;
+//    private String firstName;
+//    private String secondName;
+
+    @Enumerated(EnumType.STRING)
     private Role role; //Careworker, Patient
+
+    @Enumerated(EnumType.STRING)
     private Type type; //Helper, Nurse, Doctor
     private String nfc;
-
-
 
 }
